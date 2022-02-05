@@ -1,0 +1,34 @@
+{
+    "files.exclude":
+    {
+        "**/.DS_Store":true,
+        "**/.git":true,
+        "**/*.booproj":true,
+        "**/*.pidb":true,
+        "**/*.suo":true,
+        "**/*.user":true,
+        "**/*.userprefs":true,
+        "**/*.meta":true,
+        "build/":true,
+        "Build/":true,
+        "Library/":true,
+        "library/":true,
+        "obj/":true,
+        "Obj/":true,
+        "temp/":true,
+        "Temp/":true
+    },
+    "[yaml]": {
+        "files.trimTrailingWhitespace": false
+    },
+    "files.associations": {
+        "*.asset": "yaml",
+        "*.meta": "yaml",
+        "*.unity": "yaml",
+        "*.prefab": "yaml",
+        "*.controller": "yaml",
+        "*.mat": "yaml",
+        "*.physicmaterial": "yaml",
+        "*.inputactions": "json"
+    }
+}
