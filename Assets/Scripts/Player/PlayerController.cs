@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SelectionBase, RequireComponent(typeof(Rigidbody2D))]
+[SelectionBase, RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int ANIM_IS_MOVING_STATE      = Animator.StringToHash("Is_Moving");
+    private static readonly int ANIM_MOVEMENT_SPEED_STATE = Animator.StringToHash("Movement_Speed");
+    private static readonly int ANIM_JUMP_STATE           = Animator.StringToHash("Jump");
+    private static readonly int ANIM_IS_FALLING_STATE     = Animator.StringToHash("Is_Falling");
+
     public float Speed;
     public float JumpHeight;
     public LayerMask groundMask;
 
-    public bool isGrounded { get; private set; } = false;
+    public bool isMoving { get; private set; } = false;
+    public bool isGrounded { get; private set; } = true;
 
     private Rigidbody2D _rb;
+    private Animator _anim;
     private float _lateralMoveForce = 0;
     private bool _shouldJump = false;
 
@@ -20,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -64,6 +72,9 @@ public class PlayerController : MonoBehaviour
         _shouldJump = true;
     }
 
+    public void SetFallingAnimationState() => _anim.SetBool(ANIM_IS_FALLING_STATE, true);
+    public void ClearFallingAnimationState() => _anim.SetBool(ANIM_IS_FALLING_STATE, false);
+
     private void UpdateMovement()
     {
         var targetLateralSpeed = _lateralMoveForce * Speed;
@@ -72,13 +83,26 @@ public class PlayerController : MonoBehaviour
         if(_shouldJump && isGrounded)
         {
             targetVerticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * JumpHeight);
+            _anim.SetTrigger(ANIM_JUMP_STATE);
         }
         _shouldJump = false;
 
         _rb.velocity = new Vector2(targetLateralSpeed, targetVerticalSpeed);
+        _anim.SetFloat(ANIM_MOVEMENT_SPEED_STATE, Mathf.Abs(targetLateralSpeed));
         if(_lateralMoveForce != 0)
         {
+            if(!isMoving)
+            {
+                isMoving = true;
+                _anim.SetBool(ANIM_IS_MOVING_STATE, true);
+            }
+
             transform.localScale = new Vector3(_lateralMoveForce > 0? 1 : -1, 1, 1);
+        }
+        else
+        {
+            isMoving = false;
+            _anim.SetBool(ANIM_IS_MOVING_STATE, false);
         }
     }
 
@@ -101,6 +125,7 @@ public class PlayerController : MonoBehaviour
             // Stop coroutine from previous frame from taking effect
             StopCoroutine(nameof(ClearGrounded));
             isGrounded = true;
+            _anim.SetBool(ANIM_IS_FALLING_STATE, false);
             return;
         }
     }
@@ -117,5 +142,6 @@ public class PlayerController : MonoBehaviour
         yield return _fixedUpdateWait;
 
         isGrounded = false;
+        _anim.SetBool(ANIM_IS_FALLING_STATE, true);
     }
 }
