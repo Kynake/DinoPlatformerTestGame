@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "LAAIB76039439JY",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "LAAIB76039439JY",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 15686,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,18 @@
             "deviceId": "LAAIB76039439JY",
             "name": "com.android.settings",
             "processId": 17542,
+            "exited": false
+        },
+        {
+            "deviceId": "LAAIB76039439JY",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 14075,
+            "exited": false
+        },
+        {
+            "deviceId": "LAAIB76039439JY",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 15686,
             "exited": false
         }
     ],
