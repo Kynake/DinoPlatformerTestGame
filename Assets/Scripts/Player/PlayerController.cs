@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
         if(_shouldJump && isGrounded)
         {
-            targetVerticalSpeed = Mathf.Sqrt(2 * Physics.gravity.magnitude * JumpHeight);
+            targetVerticalSpeed = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * JumpHeight);
             _anim.SetTrigger(ANIM_JUMP_STATE);
         }
         _shouldJump = false;
