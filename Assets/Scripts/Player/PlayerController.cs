@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
     // testing if a collision is ground is very simple
     private bool IsFloorCollision(ContactPoint2D contact)
     {
-        return contact.normal == Vector2.up;
+        return Mathf.Approximately(contact.normal.y, 1);
     }
 
     private IEnumerator ClearGrounded()
