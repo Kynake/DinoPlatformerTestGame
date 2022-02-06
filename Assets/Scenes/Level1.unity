@@ -910,6 +910,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &1622009113 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1919119218061152314, guid: ab515e3050278b544b6a457cb2843576, type: 3}
+  m_PrefabInstance: {fileID: 8362653331786028990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2030890790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,6 +3474,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 103442779072542766, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 1622009113}
+    - target: {fileID: 103442779072542766, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
+      propertyPath: _followTarget
+      value: 
+      objectReference: {fileID: 1622009113}
+    - target: {fileID: 103442779072542766, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
+      propertyPath: MinimumEaseSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6355202653203052046, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
       propertyPath: m_Name
       value: Main Camera
