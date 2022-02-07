@@ -4,7 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
 public class Entity : MonoBehaviour
 {
-    protected static readonly int ANIM_IS_FALLING_STATE = Animator.StringToHash("Is_Falling");
+    protected static readonly int ANIM_IS_MOVING_STATE      = Animator.StringToHash("Is_Moving");
+    protected static readonly int ANIM_MOVEMENT_SPEED_STATE = Animator.StringToHash("Movement_Speed");
+    protected static readonly int ANIM_IS_FALLING_STATE     = Animator.StringToHash("Is_Falling");
 
     public LayerMask GroundMask;
     public LayerMask KillTriggerMask;

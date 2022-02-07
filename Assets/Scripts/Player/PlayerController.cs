@@ -5,16 +5,12 @@ using UnityEngine;
 [SelectionBase]
 public class PlayerController : Entity
 {
-    private static readonly int ANIM_IS_MOVING_STATE      = Animator.StringToHash("Is_Moving");
-    private static readonly int ANIM_MOVEMENT_SPEED_STATE = Animator.StringToHash("Movement_Speed");
-    private static readonly int ANIM_JUMP_STATE           = Animator.StringToHash("Jump");
+    private static readonly int ANIM_JUMP_STATE = Animator.StringToHash("Jump");
 
     public float Speed;
     public float JumpHeight;
 
     public LayerMask EnemyMask;
-
-    public bool isMoving { get; private set; } = false;
 
     private float _lateralMoveForce = 0;
     private bool _shouldJump = false;
@@ -65,17 +61,12 @@ public class PlayerController : Entity
         _anim.SetFloat(ANIM_MOVEMENT_SPEED_STATE, Mathf.Abs(targetLateralSpeed));
         if(_lateralMoveForce != 0)
         {
-            if(!isMoving)
-            {
-                isMoving = true;
-                _anim.SetBool(ANIM_IS_MOVING_STATE, true);
-            }
+            _anim.SetBool(ANIM_IS_MOVING_STATE, true);
 
             transform.localScale = new Vector3(_lateralMoveForce > 0? 1 : -1, 1, 1);
         }
         else
         {
-            isMoving = false;
             _anim.SetBool(ANIM_IS_MOVING_STATE, false);
         }
     }

@@ -119,7 +119,7 @@ MonoBehaviour:
   KillTriggerMask:
     serializedVersion: 2
     m_Bits: 1024
-  Speed: 0
+  Speed: 2
 --- !u!1 &4967151054587326246
 GameObject:
   m_ObjectHideFlags: 0
