@@ -14,6 +14,8 @@ public class PlayerController : Entity
     [HideInInspector]
     public bool ControlsDisabled = false;
 
+    public LayerMask WinMask;
+
     public LayerMask EnemyMask;
     private int _enemyLayer = -1;
 
@@ -78,7 +80,7 @@ public class PlayerController : Entity
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(isEnemyCollision(other))
+        if(IsEnemyCollision(other))
         {
             // Ignore Collisions between player and enemies while the player is dead
             _enemyLayer = other.gameObject.layer;
@@ -93,11 +95,18 @@ public class PlayerController : Entity
         {
             Die();
         }
+        else if(IsWinTrigger(other))
+        {
+            Win();
+        }
     }
 
-    private bool isEnemyCollision(Collision2D other)
+    private bool IsEnemyCollision(Collision2D other) => CompareToMask(EnemyMask, other.collider);
+    private bool IsWinTrigger(Collider2D other) => CompareToMask(WinMask, other);
+
+    public void Win()
     {
-        return (EnemyMask & (1 << other.gameObject.layer)) != 0;
+        print("Win!");
     }
 
     // When touching an enemy, first we take a hit
@@ -106,7 +115,6 @@ public class PlayerController : Entity
     {
         ControlsDisabled = true;
         _anim.SetTrigger(ANIM_DIE_STATE);
-
     }
 
     // When dying, we emit and event so that

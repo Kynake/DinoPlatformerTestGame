@@ -43,7 +43,6 @@ public class ObjectPool : MonoBehaviour
             if(item != null)
             {
                 item.SetActive(false);
-                print("New OBJ");
                 return item;
             }
         }

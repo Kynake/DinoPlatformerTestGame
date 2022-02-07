@@ -16,7 +16,7 @@ TagManager:
   - Foreground
   - Enemies
   - KillTrigger
-  - 
+  - WinTrigger
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 174637887
+    locked: 0
+  - name: EnemyCover
+    uniqueID: 1759809733
     locked: 0
   - name: Player
     uniqueID: 2039438207

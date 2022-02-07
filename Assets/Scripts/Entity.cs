@@ -84,8 +84,10 @@ public class Entity : MonoBehaviour
         _anim.SetTrigger(ANIM_RESET_STATE);
     }
 
-    protected bool IsKillTrigger(Collider2D other)
+    protected bool IsKillTrigger(Collider2D other) => CompareToMask(KillTriggerMask, other);
+
+    protected bool CompareToMask(LayerMask layerMask, Collider2D other)
     {
-        return (KillTriggerMask & (1 << other.gameObject.layer)) != 0;
+        return (layerMask & (1 << other.gameObject.layer)) != 0;
     }
 }
