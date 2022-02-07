@@ -87,6 +87,14 @@ public class PlayerController : Entity
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(IsKillTrigger(other))
+        {
+            Die();
+        }
+    }
+
     private bool isEnemyCollision(Collision2D other)
     {
         return (EnemyMask & (1 << other.gameObject.layer)) != 0;
