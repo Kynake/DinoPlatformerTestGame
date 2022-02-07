@@ -7,6 +7,7 @@ public class Entity : MonoBehaviour
     protected static readonly int ANIM_IS_MOVING_STATE      = Animator.StringToHash("Is_Moving");
     protected static readonly int ANIM_MOVEMENT_SPEED_STATE = Animator.StringToHash("Movement_Speed");
     protected static readonly int ANIM_IS_FALLING_STATE     = Animator.StringToHash("Is_Falling");
+    protected static readonly int ANIM_RESET_STATE          = Animator.StringToHash("Reset_Animation");
 
     public LayerMask GroundMask;
     public LayerMask KillTriggerMask;
@@ -77,6 +78,11 @@ public class Entity : MonoBehaviour
 
         IsGrounded = false;
         _anim.SetBool(ANIM_IS_FALLING_STATE, true);
+    }
+
+    public void ResetAnimation()
+    {
+        _anim.SetTrigger(ANIM_RESET_STATE);
     }
 
     protected bool IsKillTrigger(Collider2D other)
