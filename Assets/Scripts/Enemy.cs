@@ -6,6 +6,7 @@ using UnityEngine;
 [SelectionBase]
 public class Enemy : Entity
 {
+    [Min(0)]
     public float Speed;
 
     private float _moveDirection = 1;

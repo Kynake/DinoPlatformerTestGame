@@ -17,7 +17,6 @@ public class Entity : MonoBehaviour
     protected Rigidbody2D _rb;
     protected Animator _anim;
 
-    private bool _hasGoneToSleep = false;
     protected WaitForFixedUpdate _fixedUpdateWait = new WaitForFixedUpdate();
 
     protected virtual void Awake()
