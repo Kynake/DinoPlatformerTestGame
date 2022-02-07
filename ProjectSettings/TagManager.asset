@@ -15,7 +15,7 @@ TagManager:
   - Background
   - Foreground
   - Enemies
-  - 
+  - KillTrigger
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1869008937
+    locked: 0
+  - name: Enemy
+    uniqueID: 174637887
     locked: 0
   - name: Player
     uniqueID: 2039438207
