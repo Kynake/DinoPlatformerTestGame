@@ -7031,17 +7031,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 103442779072542766, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
-      propertyPath: _cameraFollow
-      value: 
-      objectReference: {fileID: 1622009113}
-    - target: {fileID: 103442779072542766, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
       propertyPath: _followTarget
       value: 
       objectReference: {fileID: 1622009113}
-    - target: {fileID: 103442779072542766, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
-      propertyPath: MinimumEaseSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6355202653203052046, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -7052,7 +7044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6355202653203052274, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.42
+      value: -6.33
       objectReference: {fileID: 0}
     - target: {fileID: 6355202653203052274, guid: 0c3a2333f407e7248b5e3e4bdd4097a4, type: 3}
       propertyPath: m_LocalPosition.y
