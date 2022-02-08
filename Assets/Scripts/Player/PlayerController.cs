@@ -8,6 +8,14 @@ public class PlayerController : Entity
     private static readonly int ANIM_JUMP_STATE = Animator.StringToHash("Jump");
     private static readonly int ANIM_DIE_STATE = Animator.StringToHash("Die");
 
+    public delegate void PlayerWin(PlayerController player);
+    public static event PlayerWin OnPlayerWin;
+
+    public delegate void PlayerDeath(PlayerController player);
+    public static event PlayerDeath OnPlayerDeath;
+
+    private static int _enemyLayer = -1;
+
     public float Speed;
     public float JumpHeight;
 
@@ -15,9 +23,10 @@ public class PlayerController : Entity
     public bool ControlsDisabled = false;
 
     public LayerMask WinMask;
-
     public LayerMask EnemyMask;
-    private int _enemyLayer = -1;
+
+    private bool _hasWon = false;
+    private bool _hasDied = false;
 
     private float _lateralMoveForce = 0;
     private bool _shouldJump = false;
@@ -26,6 +35,13 @@ public class PlayerController : Entity
     {
         InputController.OnMove += Move;
         InputController.OnJump += Jump;
+
+        if(_enemyLayer != -1)
+        {
+            Physics2D.IgnoreLayerCollision(gameObject.layer, _enemyLayer, false);
+        }
+
+        _hasWon = false;
     }
 
     private void OnDisable()
@@ -106,29 +122,38 @@ public class PlayerController : Entity
 
     public void Win()
     {
-        print("Win!");
+        if(!_hasDied)
+        {
+            ControlsDisabled = true;
+            _hasWon = true;
+
+            OnPlayerWin?.Invoke(this);
+        }
     }
 
     // When touching an enemy, first we take a hit
     // and play animations before dying
     public void TakeHit()
     {
-        ControlsDisabled = true;
-        _anim.SetTrigger(ANIM_DIE_STATE);
+        if(!_hasWon)
+        {
+            ControlsDisabled = true;
+            _hasDied = true;
+
+            _anim.SetTrigger(ANIM_DIE_STATE);
+        }
     }
 
     // When dying, we emit and event so that
     // we can reset the level, play an ad, etc
     public void Die()
     {
-        print("Player DEAD!");
+        _rb.simulated = false;
 
-        if(_enemyLayer != -1)
+        if(!_hasWon)
         {
-            Physics2D.IgnoreLayerCollision(gameObject.layer, _enemyLayer, false);
+            _hasDied = true;
+            OnPlayerDeath?.Invoke(this);
         }
-
-        ResetAnimation();
-        ControlsDisabled = false;
     }
 }
