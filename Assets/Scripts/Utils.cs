@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public static class Utils
 {
+    public const float CLOSE_ENOUGH_EPSILON = 0.001f;
+
     public static void LoadNextScene()
     {
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings, LoadSceneMode.Single);
@@ -13,5 +15,14 @@ public static class Utils
     public static void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+    }
+
+    // Like Mathf.Approximately, but more lenient
+    public static bool CloseEnough(float x, float y) => ApproxDiff(x, y, CLOSE_ENOUGH_EPSILON);
+
+    // Like Mathf.Approximately, but you can specify a value for epsilon
+    public static bool ApproxDiff(float x, float y, float epsilon)
+    {
+        return Mathf.Approximately(x, y) || Mathf.Abs(x - y) < Mathf.Abs(epsilon);
     }
 }
