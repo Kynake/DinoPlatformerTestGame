@@ -3913,6 +3913,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aacc2ded3019a44bad0ae4b13abf1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _totalTime: {fileID: 671437245}
+  _totalDeaths: {fileID: 557203477}
+  _enemyDeaths: {fileID: 1419844332}
+  _fallDeaths: {fileID: 320198460}
+  _jumps: {fileID: 1760669559}
 --- !u!95 &1415229769917378109
 Animator:
   serializedVersion: 3

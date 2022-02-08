@@ -26,6 +26,7 @@ public class PlayerController : Entity
     public LayerMask EnemyMask;
 
     private bool _hasWon = false;
+    private bool _wasHit = false;
     private bool _hasDied = false;
 
     private float _lateralMoveForce = 0;
@@ -76,7 +77,9 @@ public class PlayerController : Entity
         if(_shouldJump && IsGrounded && !ControlsDisabled)
         {
             targetVerticalSpeed = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * JumpHeight);
+
             _anim.SetTrigger(ANIM_JUMP_STATE);
+            ScoreController.Jumps++;
         }
         _shouldJump = false;
 
@@ -122,7 +125,7 @@ public class PlayerController : Entity
 
     public void Win()
     {
-        if(!_hasDied)
+        if(!(_hasDied || _wasHit))
         {
             ControlsDisabled = true;
             _hasWon = true;
@@ -138,7 +141,8 @@ public class PlayerController : Entity
         if(!_hasWon)
         {
             ControlsDisabled = true;
-            _hasDied = true;
+            _wasHit = true;
+            ScoreController.EnemyDeaths++;
 
             _anim.SetTrigger(ANIM_DIE_STATE);
         }
@@ -153,6 +157,12 @@ public class PlayerController : Entity
         if(!_hasWon)
         {
             _hasDied = true;
+            if(!_wasHit)
+            {
+                ScoreController.FallDeaths++;
+            }
+            _wasHit = false;
+
             OnPlayerDeath?.Invoke(this);
         }
     }
