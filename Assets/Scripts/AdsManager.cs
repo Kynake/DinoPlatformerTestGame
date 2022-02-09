@@ -32,7 +32,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         }
         _instance = this;
 
-        EnsureInitialized();
+        Advertisement.Initialize(GameID);
     }
 
     private void OnDestroy()
@@ -43,18 +43,18 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         }
     }
 
-    private static void EnsureInitialized()
-    {
-        if(!Advertisement.isInitialized)
-        {
-            Advertisement.Initialize(GameID);
-        }
-    }
-
     // Static external calls
     public static void PlayInterstitialAd(Action onAdComplete)
     {
-        EnsureInitialized();
+        if(!Advertisement.isInitialized)
+        {
+            onAdComplete?.Invoke();
+
+            // Try to initialize ads again, if we haven't been able to
+            Advertisement.Initialize(GameID);
+            return;
+        }
+
         if(Advertisement.isShowing)
         {
             onAdComplete?.Invoke();
