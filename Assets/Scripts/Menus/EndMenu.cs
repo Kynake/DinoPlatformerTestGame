@@ -27,6 +27,6 @@ public class EndMenu : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        Utils.LoadNextScene();
+        AdsManager.PlayInterstitialAd(Utils.LoadMainMenu);
     }
 }

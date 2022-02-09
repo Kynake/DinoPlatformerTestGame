@@ -17,6 +17,11 @@ public static class Utils
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
+    public static void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
     // Like Mathf.Approximately, but more lenient
     public static bool CloseEnough(float x, float y) => ApproxDiff(x, y, CLOSE_ENOUGH_EPSILON);
 
