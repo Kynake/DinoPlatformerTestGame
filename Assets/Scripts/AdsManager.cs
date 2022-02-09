@@ -51,6 +51,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         }
     }
 
+    // Static external calls
     public static void PlayInterstitialAd(Action onAdComplete)
     {
         EnsureInitialized();
@@ -66,6 +67,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         Advertisement.Load(INTERSTITIAL_ID, _instance);
     }
 
+    // Internal singleton methods
     private void ShowInsterstitialAd(string id)
     {
         OnPlayAd = null;
