@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class EndLevelMenu : MonoBehaviour
 {
+    public string RetryMessage = "You Died";
     public string RetryPrompt = "Retry";
+    public string NextLevelMessage = "Level Complete";
     public string NextLevelPrompt = "Continue";
 
     [SerializeField]
     private GameObject _onScreenControls = null;
+
+    [SerializeField]
+    private Text _messageTextField = null;
 
     [SerializeField]
     private Text _continueTextField = null;
@@ -35,24 +40,24 @@ public class EndLevelMenu : MonoBehaviour
     private void OpenEndLevelScreen(bool shouldRetry)
     {
         _shouldRetry = shouldRetry;
+        _messageTextField.text = shouldRetry? RetryMessage : NextLevelMessage;
         _continueTextField.text = shouldRetry? RetryPrompt : NextLevelPrompt;
 
         _onScreenControls?.SetActive(false);
         gameObject.SetActive(true);
     }
 
-    public void OnPressContinue()
-    {
-        AdsManager.PlayInterstitialAd(() => {
-            if(_shouldRetry)
-            {
-                Utils.ReloadScene();
-            }
+    public void OnPressContinue() => AdsManager.PlayInterstitialAd(LoadScene);
 
-            else
-            {
-                Utils.LoadNextScene();
-            }
-        });
+    private void LoadScene()
+    {
+        if(_shouldRetry)
+        {
+            Utils.ReloadScene();
+        }
+        else
+        {
+            Utils.LoadNextScene();
+        }
     }
 }

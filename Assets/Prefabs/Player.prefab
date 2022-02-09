@@ -467,7 +467,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 8801708980177063706}
-  - {fileID: 6858296409633761301}
+  - {fileID: 7378678862038865069}
   m_Father: {fileID: 8473722069881174821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -787,7 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementRange: 70
   m_ControlPath: <Gamepad>/leftStick
---- !u!1001 &6454788701032548123
+--- !u!1001 &6980510652587326371
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -808,27 +808,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,15 +848,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -882,18 +882,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndLevelMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 2125363202622741830, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7758463090882993854, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
       propertyPath: _onScreenControls
       value: 
       objectReference: {fileID: 4375123535318894159}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
---- !u!224 &6858296409633761301 stripped
+--- !u!224 &7378678862038865069 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 484581302323818254, guid: 5a6216594a3ca2b4fb57ecc517233d41, type: 3}
-  m_PrefabInstance: {fileID: 6454788701032548123}
+  m_PrefabInstance: {fileID: 6980510652587326371}
   m_PrefabAsset: {fileID: 0}
