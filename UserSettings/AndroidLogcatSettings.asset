@@ -1,59 +1,47 @@
 {
-    "m_SelectedDeviceId": "0030176538",
+    "m_SelectedDeviceId": "LAAIB76039439JY",
     "m_SelectedPackage": {
         "deviceId": "LAAIB76039439JY",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 12553,
+        "processId": 14113,
         "exited": false
     },
-    "m_SelectedPriority": 0,
+    "m_SelectedPriority": 2,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "LAAIB76039439JY",
-            "name": "com.android.settings",
-            "processId": 17542,
-            "exited": false
-        },
-        {
-            "deviceId": "LAAIB76039439JY",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 14075,
-            "exited": false
-        },
-        {
-            "deviceId": "LAAIB76039439JY",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 15686,
-            "exited": false
-        },
-        {
-            "deviceId": "LAAIB76039439JY",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 16820,
-            "exited": false
-        },
         {
             "deviceId": "LAAIB76039439JY",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 25317,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LAAIB76039439JY",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 719,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LAAIB76039439JY",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 7724,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "LAAIB76039439JY",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 12553,
+            "exited": true
+        },
+        {
+            "deviceId": "LAAIB76039439JY",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 13764,
+            "exited": true
+        },
+        {
+            "deviceId": "LAAIB76039439JY",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 14113,
             "exited": false
         }
     ],

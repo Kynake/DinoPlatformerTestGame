@@ -43,14 +43,16 @@ public class EndLevelMenu : MonoBehaviour
 
     public void OnPressContinue()
     {
-        if(_shouldRetry)
-        {
-            Utils.ReloadScene();
-        }
+        AdsManager.PlayInterstitialAd(() => {
+            if(_shouldRetry)
+            {
+                Utils.ReloadScene();
+            }
 
-        else
-        {
-            Utils.LoadNextScene();
-        }
+            else
+            {
+                Utils.LoadNextScene();
+            }
+        });
     }
 }

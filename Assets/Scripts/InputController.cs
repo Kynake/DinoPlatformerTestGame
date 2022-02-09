@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour
     {
         if(_instance != null)
         {
-            Destroy(gameObject);
+            Destroy(this);
             return;
         }
         _instance = this;

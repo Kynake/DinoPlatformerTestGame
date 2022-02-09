@@ -36,7 +36,7 @@ public class ScoreController : MonoBehaviour
     {
         if(_instance != null)
         {
-            Destroy(gameObject);
+            Destroy(this);
             return;
         }
 
