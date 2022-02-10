@@ -8,7 +8,5 @@ public class MainMenu : MonoBehaviour
     {
         ScoreController.ResetStats();
         Utils.LoadNextScene();
-
-        print(Utils.GetSceneNameFromBuildIndex(1));
     }
 }

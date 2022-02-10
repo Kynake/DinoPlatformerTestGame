@@ -100,3 +100,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83b0632e9d5dfa4da7a8b2215590a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinimumFirstAdTime: 10
+  MinimumAdInterval: 60

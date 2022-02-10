@@ -23,6 +23,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
     private Action OnAdCompleteAction = null;
 
+    [Tooltip("A time in seconds within which no ads will ever be shown upon starting the game")]
+    public float MinimumFirstAdTime;
+
+    [Tooltip("The minimum time interval, in seconds, between one ad and the next. This is to prevent player fatigue from being shown multiple ads too quickly")]
+    public float MinimumAdInterval;
+    private float _lastAdSeenTime;
+
     private void Awake()
     {
         if(_instance != null)
@@ -33,6 +40,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         _instance = this;
 
         Advertisement.Initialize(GameID);
+
+        _lastAdSeenTime = MinimumFirstAdTime - MinimumAdInterval;
     }
 
     private void OnDestroy()
@@ -57,7 +66,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
             return;
         }
 
-        if(Advertisement.isShowing)
+        if(Advertisement.isShowing || Time.realtimeSinceStartup - _instance._lastAdSeenTime < _instance.MinimumAdInterval)
         {
             onAdComplete?.Invoke();
             return;
@@ -100,6 +109,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     }
 
     public void OnUnityAdsShowComplete(string unitID, UnityAdsShowCompletionState showCompletionState) {
+        _lastAdSeenTime = Time.realtimeSinceStartup;
         OnAdCompleteAction?.Invoke();
         OnAdCompleteAction = null;
     }
