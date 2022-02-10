@@ -40,7 +40,7 @@ public class AnalyticsManager : MonoBehaviour
     {
         var data = new Dictionary<string, object> {
             { "Level", Utils.GetCurrentSceneName() },
-            { "Successfull_Run_Time", successfulRunTime },
+            { "Successful_Run_Time", successfulRunTime },
             { "Total_Time_In_Level", totalTimeInLevel },
             { "Total_Deaths_In_Level", totalDeathsInLevel }
         };
