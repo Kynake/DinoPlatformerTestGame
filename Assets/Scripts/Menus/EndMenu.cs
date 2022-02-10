@@ -18,11 +18,14 @@ public class EndMenu : MonoBehaviour
         var finalTime = ScoreController.TotalTime;
         _totalTime.text = $"{(int) finalTime / 60:00}:{finalTime % 60:00.00}";
 
-        _totalDeaths.text = ScoreController.Deaths.ToString();
+        _totalDeaths.text = ScoreController.TotalDeaths.ToString();
         _enemyDeaths.text = ScoreController.EnemyDeaths.ToString();
         _fallDeaths.text = ScoreController.FallDeaths.ToString();
 
         _jumps.text = ScoreController.Jumps.ToString();
+
+        // Send game complete analytics
+        AnalyticsManager.SendGameCompleteEvent(ScoreController.TimePerLevel, ScoreController.DeathsByType);
     }
 
     public void ReturnToMainMenu()

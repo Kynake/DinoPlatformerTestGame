@@ -32,6 +32,11 @@ public class PlayerController : Entity
     private float _lateralMoveForce = 0;
     private bool _shouldJump = false;
 
+    private void Start()
+    {
+        ScoreController.StartAttemptStopwatch();
+    }
+
     private void OnEnable()
     {
         InputController.OnMove += Move;
@@ -99,7 +104,7 @@ public class PlayerController : Entity
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(IsEnemyCollision(other))
+        if(!(_hasDied || _wasHit) && IsEnemyCollision(other))
         {
             // Ignore Collisions between player and enemies while the player is dead
             _enemyLayer = other.gameObject.layer;
@@ -125,10 +130,13 @@ public class PlayerController : Entity
 
     public void Win()
     {
-        if(!(_hasDied || _wasHit))
+        if(!(_hasWon || _hasDied || _wasHit))
         {
             ControlsDisabled = true;
             _hasWon = true;
+
+            // Send level win analytics event
+            ScoreController.RegisterLevelWin();
 
             OnPlayerWin?.Invoke(this);
         }
@@ -138,11 +146,11 @@ public class PlayerController : Entity
     // and play animations before dying
     public void TakeHit()
     {
-        if(!_hasWon)
+        if(!(_hasWon || _hasDied || _wasHit))
         {
             ControlsDisabled = true;
             _wasHit = true;
-            ScoreController.EnemyDeaths++;
+            ScoreController.RegisterEnemyDeath(transform.position);
 
             _anim.SetTrigger(ANIM_DIE_STATE);
         }
@@ -154,12 +162,12 @@ public class PlayerController : Entity
     {
         _rb.simulated = false;
 
-        if(!_hasWon)
+        if(!(_hasWon || _hasDied))
         {
             _hasDied = true;
             if(!_wasHit)
             {
-                ScoreController.FallDeaths++;
+                ScoreController.RegisterFallDeath(transform.position);
             }
             _wasHit = false;
 

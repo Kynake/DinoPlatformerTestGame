@@ -41,6 +41,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         {
             return;
         }
+
+        _instance = null;
     }
 
     // Static external calls

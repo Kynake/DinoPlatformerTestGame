@@ -6,8 +6,9 @@ public class MainMenu : MonoBehaviour
 {
     public void OnClickStart()
     {
-        ScoreController.ResetScore();
-        ScoreController.StartTimer();
+        ScoreController.ResetStats();
         Utils.LoadNextScene();
+
+        print(Utils.GetSceneNameFromBuildIndex(1));
     }
 }
