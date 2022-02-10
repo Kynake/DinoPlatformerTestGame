@@ -34,7 +34,7 @@ public class PlayerController : Entity
 
     private void Start()
     {
-        ScoreController.StartAttemptStopwatch();
+        StatsController.StartAttemptStopwatch();
     }
 
     private void OnEnable()
@@ -84,7 +84,7 @@ public class PlayerController : Entity
             targetVerticalSpeed = Mathf.Sqrt(2 * Physics2D.gravity.magnitude * JumpHeight);
 
             _anim.SetTrigger(ANIM_JUMP_STATE);
-            ScoreController.Jumps++;
+            StatsController.Jumps++;
         }
         _shouldJump = false;
 
@@ -136,7 +136,7 @@ public class PlayerController : Entity
             _hasWon = true;
 
             // Send level win analytics event
-            ScoreController.RegisterLevelWin();
+            StatsController.RegisterLevelWin();
 
             OnPlayerWin?.Invoke(this);
         }
@@ -150,7 +150,7 @@ public class PlayerController : Entity
         {
             ControlsDisabled = true;
             _wasHit = true;
-            ScoreController.RegisterEnemyDeath(transform.position);
+            StatsController.RegisterEnemyDeath(transform.position);
 
             _anim.SetTrigger(ANIM_DIE_STATE);
         }
@@ -167,7 +167,7 @@ public class PlayerController : Entity
             _hasDied = true;
             if(!_wasHit)
             {
-                ScoreController.RegisterFallDeath(transform.position);
+                StatsController.RegisterFallDeath(transform.position);
             }
             _wasHit = false;
 

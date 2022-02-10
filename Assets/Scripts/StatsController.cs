@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour
+public class StatsController : MonoBehaviour
 {
-    private static ScoreController _instance = null;
+    private static StatsController _instance = null;
 
     public static Dictionary<int, float> TimePerLevel = new Dictionary<int, float>();
     private static float _attemptTimer = 0;

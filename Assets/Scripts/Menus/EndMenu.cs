@@ -15,17 +15,17 @@ public class EndMenu : MonoBehaviour
 
     private void Start()
     {
-        var finalTime = ScoreController.TotalTime;
+        var finalTime = StatsController.TotalTime;
         _totalTime.text = $"{(int) finalTime / 60:00}:{finalTime % 60:00.00}";
 
-        _totalDeaths.text = ScoreController.TotalDeaths.ToString();
-        _enemyDeaths.text = ScoreController.EnemyDeaths.ToString();
-        _fallDeaths.text = ScoreController.FallDeaths.ToString();
+        _totalDeaths.text = StatsController.TotalDeaths.ToString();
+        _enemyDeaths.text = StatsController.EnemyDeaths.ToString();
+        _fallDeaths.text = StatsController.FallDeaths.ToString();
 
-        _jumps.text = ScoreController.Jumps.ToString();
+        _jumps.text = StatsController.Jumps.ToString();
 
         // Send game complete analytics
-        AnalyticsManager.SendGameCompleteEvent(ScoreController.TimePerLevel, ScoreController.DeathsByType);
+        AnalyticsManager.SendGameCompleteEvent(StatsController.TimePerLevel, StatsController.DeathsByType);
     }
 
     public void ReturnToMainMenu()

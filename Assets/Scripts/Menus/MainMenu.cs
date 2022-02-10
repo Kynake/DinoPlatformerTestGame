@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void OnClickStart()
     {
-        ScoreController.ResetStats();
+        StatsController.ResetStats();
         Utils.LoadNextScene();
     }
 }
